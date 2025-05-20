@@ -1,0 +1,39 @@
+version: '3.8'  # Pas d'indentation ici
+
+services:        # Niveau racine
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 03012002
+      MYSQL_DATABASE: vehicle_db
+      MYSQL_USER: user
+      MYSQL_PASSWORD:
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./src/main/resources/db/seeders:/docker-entrypoint-initdb.d
+    ports:
+      - "3306:3306"
+    networks:
+      - vehicle-network
+
+  vehicle-api:
+    build: .
+    container_name: vehicle-api
+    depends_on:
+      - mysql
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/vehicle_db?useSSL=false
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: 03012002
+    ports:
+      - "8080:8080"
+    networks:
+      - vehicle-network
+
+volumes:         # Niveau racine
+  mysql_data:    # Déclaration correcte d'un volume nommé
+
+networks:        # Niveau racine
+  vehicle-network:
+    driver: bridge
