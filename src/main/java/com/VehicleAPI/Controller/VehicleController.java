@@ -60,9 +60,10 @@ public class VehicleController {
     // ==================== Endpoints de recherche ====================
 
     // Recherche par numéro d'immatriculation (GET avec paramètre)
+
     @GetMapping("/search/registration")
     public ResponseEntity<Vehicle> searchByRegistrationNumber(
-            @RequestParam String registrationNumber
+            @RequestBody String registrationNumber
     ) {
         Vehicle vehicle = vehicleService.searchByRegistrationNumber(registrationNumber);
         return ResponseEntity.ok(vehicle); // HTTP 200
@@ -71,7 +72,7 @@ public class VehicleController {
     // Recherche par prix maximum (GET avec paramètre)
     @GetMapping("/search/price")
     public ResponseEntity<List<Vehicle>> searchByMaxPrice(
-            @RequestParam Double maxPrice
+            @RequestBody Double maxPrice
     ) {
         List<Vehicle> vehicles = vehicleService.searchByMaxPrice(maxPrice);
         return ResponseEntity.ok(vehicles); // HTTP 200
