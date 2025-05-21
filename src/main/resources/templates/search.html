@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Même en-tête -->
+</head>
+<body class="bg-light">
+<div class="container mt-5">
+    <h2 class="mb-4">Recherche</h2>
+
+    <!-- Recherche par immatriculation -->
+    <div class="card mb-4 p-3">
+        <h5>Par immatriculation</h5>
+        <form th:action="@{/api/vehicles/search/registration}" method="get" class="row g-3">
+            <div class="col-auto">
+                <input type="text" class="form-control" name="registrationNumber">
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-warning">Rechercher</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Recherche par prix -->
+    <div class="card p-3">
+        <h5>Par prix maximum</h5>
+        <form th:action="@{/api/vehicles/search/price}" method="get" class="row g-3">
+            <div class="col-auto">
+                <input type="number" class="form-control" name="maxPrice" step="0.01">
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-warning">Rechercher</button>
+            </div>
+        </form>
+    </div>
+
+    <a href="/" class="btn btn-link mt-3">Retour</a>
+</div>
+</body>
+</html>

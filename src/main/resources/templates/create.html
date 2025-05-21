@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Même en-tête que index.html -->
+</head>
+<body class="bg-light">
+<div class="container mt-5">
+    <h2 class="mb-4">Créer un véhicule</h2>
+
+    <!-- Formulaire de création -->
+    <form th:action="@{/api/vehicles}" method="post" class="card p-3">
+        <div class="mb-3">
+            <label class="form-label">Numéro d'immatriculation</label>
+            <input type="text" class="form-control" name="registrationNumber" required>
+        </div>
+        <!-- Autres champs (make, model, etc.) similaires -->
+        <button type="submit" class="btn btn-primary">Créer</button>
+    </form>
+
+    <a href="/" class="btn btn-link mt-3">Retour</a>
+</div>
+</body>
+</html>
