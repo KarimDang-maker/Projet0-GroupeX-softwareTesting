@@ -22,11 +22,11 @@ public class Vehicle {
     @Column (name = "model")
     private String model;
 
-    @Column(name = "plate_number")
+    @Column(name = "plateNumber")
     private String plateNumber;
 
     @Column(nullable = false)
-    private Integer price;
+    private Double price;
 
     @Column(name = "type")
     private String type;

@@ -41,6 +41,7 @@ public class VehicleController {
     }
 
     // Mettre à jour un véhicule (PUT)
+
     @PutMapping("/{id}")
     public ResponseEntity<Vehicle> updateVehicle(
             @PathVariable Long id,
@@ -61,7 +62,7 @@ public class VehicleController {
 
     // Recherche par numéro d'immatriculation (GET avec paramètre)
 
-    @GetMapping("/search/registration")
+    @PostMapping("/search/registration")
     public ResponseEntity<Vehicle> searchByRegistrationNumber(
             @RequestBody String registrationNumber
     ) {
@@ -70,12 +71,11 @@ public class VehicleController {
     }
 
     // Recherche par prix maximum (GET avec paramètre)
-    @GetMapping("/search/price")
+    @PostMapping("/search/price")
     public ResponseEntity<List<Vehicle>> searchByMaxPrice(
             @RequestBody Double maxPrice
     ) {
         List<Vehicle> vehicles = vehicleService.searchByMaxPrice(maxPrice);
         return ResponseEntity.ok(vehicles); // HTTP 200
     }
-
 }

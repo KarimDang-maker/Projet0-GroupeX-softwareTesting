@@ -40,6 +40,9 @@ public class VehicleService {
 
         // Met à jour tous les champs sauf l'ID
         existingVehicle.setRegistrationNumber(updatedVehicle.getRegistrationNumber());
+        existingVehicle.setBrand(updatedVehicle.getBrand());
+        existingVehicle.setPrice(updatedVehicle.getPrice());
+        existingVehicle.setPlateNumber(updatedVehicle.getPlateNumber());
         existingVehicle.setMake(updatedVehicle.getMake());
         existingVehicle.setModel(updatedVehicle.getModel());
         existingVehicle.setYear(updatedVehicle.getYear());
